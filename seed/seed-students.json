@@ -1,0 +1,84 @@
+{
+  "Items": [
+    {
+      "studentId": "S001",
+      "fullName": "Nguyễn Văn A",
+      "dob": "2003-01-15",
+      "major": "Công nghệ thông tin",
+      "email": "s001@school.edu",
+      "classes": ["INT3306", "INT3401"]
+    },
+    {
+      "studentId": "S002",
+      "fullName": "Trần Thị B",
+      "dob": "2002-12-22",
+      "major": "Khoa học máy tính",
+      "email": "s002@school.edu",
+      "classes": ["MAT1101", "PHY1102"]
+    },
+    {
+      "studentId": "S003",
+      "fullName": "Lê Văn C",
+      "dob": "2003-03-05",
+      "major": "Truyền thông",
+      "email": "s003@school.edu",
+      "classes": ["COM2001"]
+    },
+    {
+      "studentId": "S004",
+      "fullName": "Phạm Thị D",
+      "dob": "2003-04-12",
+      "major": "Quản trị kinh doanh",
+      "email": "s004@school.edu",
+      "classes": ["BUS1001", "BUS2001"]
+    },
+    {
+      "studentId": "S005",
+      "fullName": "Vũ Văn E",
+      "dob": "2002-11-01",
+      "major": "Tài chính ngân hàng",
+      "email": "s005@school.edu",
+      "classes": ["FIN2201"]
+    },
+    {
+      "studentId": "S006",
+      "fullName": "Đặng Thị F",
+      "dob": "2003-06-17",
+      "major": "Ngôn ngữ Anh",
+      "email": "s006@school.edu",
+      "classes": ["ENG3001"]
+    },
+    {
+      "studentId": "S007",
+      "fullName": "Hoàng Văn G",
+      "dob": "2003-07-21",
+      "major": "Logistics",
+      "email": "s007@school.edu",
+      "classes": ["LOG2101", "LOG2202"]
+    },
+    {
+      "studentId": "S008",
+      "fullName": "Bùi Thị H",
+      "dob": "2003-02-10",
+      "major": "Thiết kế đồ họa",
+      "email": "s008@school.edu",
+      "classes": ["DES1001", "DES2001"]
+    },
+    {
+      "studentId": "S009",
+      "fullName": "Mai Văn I",
+      "dob": "2002-09-30",
+      "major": "Điện tử viễn thông",
+      "email": "s009@school.edu",
+      "classes": ["TEL3001"]
+    },
+    {
+      "studentId": "S010",
+      "fullName": "Đỗ Thị K",
+      "dob": "2003-08-25",
+      "major": "Kỹ thuật phần mềm",
+      "email": "s010@school.edu",
+      "classes": ["SWE3001", "SWE4001"]
+    }
+  ]
+}
