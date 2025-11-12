@@ -1,0 +1,197 @@
+service: student-support-copilot
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: local
+  region: us-east-1
+  environment:
+    NODE_ENV: ${env:NODE_ENV, 'development'}
+    USERS_TABLE: Users
+    STUDENTS_TABLE: Students
+    COURSES_TABLE: Courses
+    ENROLLMENTS_TABLE: Enrollments
+    DYNAMODB_ENDPOINT: ${env:DYNAMODB_ENDPOINT, 'http://localhost:8000'}
+    JWT_SECRET: ${env:JWT_SECRET}
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - arn:aws:dynamodb:*:*:table/Users
+        - arn:aws:dynamodb:*:*:table/Students
+        - arn:aws:dynamodb:*:*:table/Courses
+        - arn:aws:dynamodb:*:*:table/Enrollments
+        - arn:aws:dynamodb:*:*:table/Users/index/gsi_email
+        - arn:aws:dynamodb:*:*:table/Enrollments/index/gsi_student
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  serverless-offline:
+    httpPort: 3000
+    stage: local
+    noPrependStageInUrl: true
+    corsAllowOrigin: '*'
+    corsAllowHeaders: '*'
+    corsAllowCredentials: false
+  dynamodb:
+    stages:
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    seed:
+      local:
+        sources:
+          - table: Users
+            sources:
+              - seed/seed-users.json
+          - table: Students
+            sources:
+              - seed/seed-students.json
+          - table: Courses
+            sources:
+              - seed/seed-courses.json
+          - table: Enrollments
+            sources:
+              - seed/seed-enrollments.json
+
+functions:
+  api:
+    handler: src/app.handler
+    events:
+      - http:
+          path: health
+          method: get
+      - http:
+          path: auth/register
+          method: post
+      - http:
+          path: auth/login
+          method: post
+      - http:
+          path: students
+          method: get
+      - http:
+          path: students
+          method: post
+      - http:
+          path: students/{id}
+          method: get
+      - http:
+          path: students/{id}
+          method: put
+      - http:
+          path: students/{id}
+          method: delete
+      - http:
+          path: courses
+          method: get
+      - http:
+          path: courses
+          method: post
+      - http:
+          path: courses/{id}
+          method: get
+      - http:
+          path: courses/{id}
+          method: put
+      - http:
+          path: courses/{id}
+          method: delete
+      - http:
+          path: enrollments
+          method: get
+      - http:
+          path: enrollments
+          method: post
+      - http:
+          path: enrollments/{id}
+          method: patch
+      - http:
+          path: enrollments/{id}
+          method: delete
+      - http:
+          path: chat/ask
+          method: post
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Users
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: gsi_email
+            KeySchema:
+              - AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        BillingMode: PAY_PER_REQUEST
+    StudentsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Students
+        AttributeDefinitions:
+          - AttributeName: studentId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: studentId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    CoursesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Courses
+        AttributeDefinitions:
+          - AttributeName: courseId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: courseId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    EnrollmentsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Enrollments
+        AttributeDefinitions:
+          - AttributeName: enrollmentId
+            AttributeType: S
+          - AttributeName: studentId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: enrollmentId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: gsi_student
+            KeySchema:
+              - AttributeName: studentId
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        BillingMode: PAY_PER_REQUEST

@@ -1,0 +1,38 @@
+serverless.yml - Cấu hình Serverless Framework, plugin offline và khai báo bảng DynamoDB.
+package.json - Khai báo package Node.js, scripts và dependency ESM.
+.env.example - Mẫu cấu hình môi trường (API key, JWT secret, NODE_ENV).
+.gitignore - Loại trừ thư mục build, node_modules, file môi trường.
+.nvmrc - Khuyến nghị phiên bản Node 20.19.0.
+README.md - Tài liệu hướng dẫn cài đặt, chạy và mô tả API tiếng Việt.
+setup.sh - Script tái tạo toàn bộ cấu trúc dự án và nội dung file.
+summary.txt - Danh sách mô tả nhanh từng file.
+postman_collection.json - Bộ sưu tập Postman cho toàn bộ endpoint.
+jest.config.js - Cấu hình Jest chạy trong môi trường Node ESM.
+.eslintrc.cjs - Quy tắc ESLint.
+.prettierrc - Thiết lập Prettier.
+seed/seed-users.json - Dữ liệu mẫu bảng Users.
+seed/seed-students.json - Dữ liệu mẫu bảng Students (10 bản ghi).
+seed/seed-courses.json - Dữ liệu mẫu bảng Courses (8 bản ghi).
+seed/seed-enrollments.json - Dữ liệu mẫu bảng Enrollments (12 bản ghi).
+seed/seed-runner.js - Script nạp seed vào DynamoDB Local.
+src/app.js - Ứng dụng Express bọc Serverless, định nghĩa route và middleware.
+src/handlers/auth.js - Xử lý đăng ký/đăng nhập, hash mật khẩu, trả JWT.
+src/handlers/students.js - CRUD sinh viên và tìm kiếm theo từ khóa.
+src/handlers/courses.js - CRUD môn học và lọc theo học kỳ.
+src/handlers/enrollments.js - CRUD đăng ký học phần và lọc theo sinh viên.
+src/handlers/chat.js - Proxy gọi OpenAI GPT-only với prompt tiếng Việt.
+src/handlers/health.js - Endpoint kiểm tra sức khỏe dịch vụ.
+src/lib/config.js - Nạp biến môi trường và cấu hình chung.
+src/lib/db.js - Kết nối DynamoDB hoặc in-memory (khi test), helper CRUD.
+src/lib/response.js - Tiện ích chuẩn hóa JSON response.
+src/lib/validator.js - Định nghĩa schema zod cho các payload.
+src/lib/auth.js - Hàm hash/compare bcrypt, JWT helper và middleware.
+src/lib/logger.js - Middleware morgan và logging lỗi.
+src/prompts/*.md - Prompt GPT theo từng chủ đề hỗ trợ sinh viên.
+src/utils/errors.js - Định nghĩa lớp lỗi ứng dụng tùy biến.
+tests/setup.js - Thiết lập môi trường test, reset in-memory store.
+tests/auth.test.js - Kiểm thử auth happy path và lỗi.
+tests/students.test.js - Kiểm thử CRUD sinh viên với JWT.
+tests/courses.test.js - Kiểm thử API môn học.
+tests/enrollments.test.js - Kiểm thử API đăng ký học.
+tests/chat.test.js - Kiểm thử endpoint chat và xử lý thiếu khóa.

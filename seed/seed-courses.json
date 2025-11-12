@@ -1,0 +1,60 @@
+{
+  "Items": [
+    {
+      "courseId": "C001",
+      "title": "Nhập môn Công nghệ thông tin",
+      "credits": 3,
+      "semester": "2024A",
+      "teacher": "TS. Nguyễn Hữu Long"
+    },
+    {
+      "courseId": "C002",
+      "title": "Cấu trúc dữ liệu",
+      "credits": 4,
+      "semester": "2024A",
+      "teacher": "ThS. Trần Minh"
+    },
+    {
+      "courseId": "C003",
+      "title": "Nguyên lý Marketing",
+      "credits": 3,
+      "semester": "2024B",
+      "teacher": "TS. Hoàng Lan"
+    },
+    {
+      "courseId": "C004",
+      "title": "Kinh tế vi mô",
+      "credits": 3,
+      "semester": "2024B",
+      "teacher": "PGS. Phạm Thái"
+    },
+    {
+      "courseId": "C005",
+      "title": "Lập trình Web",
+      "credits": 3,
+      "semester": "2024A",
+      "teacher": "ThS. Lê Hòa"
+    },
+    {
+      "courseId": "C006",
+      "title": "Phân tích dữ liệu",
+      "credits": 3,
+      "semester": "2024C",
+      "teacher": "TS. Nguyễn Lệ"
+    },
+    {
+      "courseId": "C007",
+      "title": "Thiết kế đồ họa",
+      "credits": 2,
+      "semester": "2024C",
+      "teacher": "GV. Bùi Hà"
+    },
+    {
+      "courseId": "C008",
+      "title": "Truyền thông đa phương tiện",
+      "credits": 3,
+      "semester": "2024B",
+      "teacher": "TS. Đặng Sơn"
+    }
+  ]
+}

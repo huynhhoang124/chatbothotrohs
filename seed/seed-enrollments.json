@@ -1,0 +1,16 @@
+{
+  "Items": [
+    { "enrollmentId": "E001", "studentId": "S001", "courseId": "C001", "status": "enrolled" },
+    { "enrollmentId": "E002", "studentId": "S001", "courseId": "C002", "status": "enrolled" },
+    { "enrollmentId": "E003", "studentId": "S002", "courseId": "C003", "status": "completed" },
+    { "enrollmentId": "E004", "studentId": "S003", "courseId": "C005", "status": "enrolled" },
+    { "enrollmentId": "E005", "studentId": "S004", "courseId": "C004", "status": "dropped" },
+    { "enrollmentId": "E006", "studentId": "S005", "courseId": "C006", "status": "enrolled" },
+    { "enrollmentId": "E007", "studentId": "S006", "courseId": "C007", "status": "completed" },
+    { "enrollmentId": "E008", "studentId": "S007", "courseId": "C008", "status": "enrolled" },
+    { "enrollmentId": "E009", "studentId": "S008", "courseId": "C001", "status": "enrolled" },
+    { "enrollmentId": "E010", "studentId": "S009", "courseId": "C002", "status": "enrolled" },
+    { "enrollmentId": "E011", "studentId": "S010", "courseId": "C005", "status": "enrolled" },
+    { "enrollmentId": "E012", "studentId": "S010", "courseId": "C006", "status": "enrolled" }
+  ]
+}
